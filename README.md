@@ -1,5 +1,5 @@
-# TP4-MA123
 from math import *
+import matplotlib.pyplot as plt
 
 
 epsilon = 1e-6
@@ -24,13 +24,21 @@ def Point_Fixe(g,x0,epsilon,Nintermax,alpha):
         L_xn.append(xnew) #xold ou xnew?
         L_en.append(xnew-alpha) #pour xn : xold ou xnew?
     return (L_n,L_xn,L_en)
+   
 
-print("FONCTION ZERO")
+print("FONCTION ZERO point fixe")
 
 def g0(x):
     return (1 + sin (x))/2
 
-print(Point_Fixe(g0,0,epsilon,Nintermax,0.8878620474343383))
+print(Point_Fixe(g0,0,epsilon,Nitermax,0.8878620474343383))
+
+
+plt.plot('L_en')
+plt.xlabel('L_n')
+plt.ylabel('l_xn')
+plt.show()
+
 
 
 # 2. x = 3*cos(x)-2
@@ -76,7 +84,6 @@ print(Point_Fixe(g8bis,-2.5,epsilon,Nitermax,-2.509))
 
 
 
-
 print("NEWTON")
 
 
@@ -108,6 +115,10 @@ def fder(x):
     return 2-cos(x)
 
 print(Newton(f,fder,0,epsilon,Nitermax,0.8878620474343383))
+plt.plot('L_en')
+plt.xlabel('L_n')
+plt.ylabel('l_xn')
+plt.show()
 
 
 
@@ -202,11 +213,20 @@ print("FONCTION ZERO")
 
 def f(x):
     return 2*x-(1 + sin (x))
-print(Dichotomie(f, 0, 1, epsilon, Nitermax))
-print(Secante(f, 0, 1, epsilon, Nitermax))
+print(Dichotomie(f, 0, 1, epsilon, Nitermax,0.8878620474343383))
+plt.plot('L_en')
+plt.xlabel('L_n')
+plt.ylabel('l_an')
+plt.show()
+
+print(Secante(f, 0, 1, epsilon, Nitermax,0.8878620474343383))
+plt.plot('L_en')
+plt.xlabel('L_n')
+plt.ylabel('l_xn')
+plt.show()
 
 
-    
+
 #2  x = 3*cos(x)-2
 print("PREMIERE FONCTION")
 def f3(x):
@@ -247,6 +267,8 @@ print(Dichotomie(f1, -2.6, -2.4, epsilon, Nitermax,-2.509),'\n'*3)
 
 print(Secante(f1, 2, 2.5, epsilon, Nitermax,2.0345))
 print(Secante(f1, -2.6, -2.4, epsilon, Nitermax,-2.509), '\n'*3)
+
+
 
 
 
